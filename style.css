@@ -1,203 +1,341 @@
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-font-family:'Poppins',sans-serif;
-background:linear-gradient(135deg,#ff4e8b,#ff8fab,#ffd6e7);
-overflow-x:hidden;
-color:white;
-text-align:center;
-min-height:100vh;
+html {
+    scroll-behavior: smooth;
 }
 
-.hero{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-padding:20px;
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top, #35105c 0%, #170522 40%, #09030f 100%);
+    color: #f5eaff;
+    font-family: Georgia, "Times New Roman", serif;
+    overflow-x: hidden;
+    position: relative;
 }
 
-h1{
-font-family:'Great Vibes',cursive;
-font-size:70px;
-margin-bottom:20px;
-text-shadow:0 0 20px rgba(255,255,255,.8);
-animation:glow 2s infinite alternate;
+/* Background glow */
+
+.background-glow {
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.25;
+    pointer-events: none;
+    z-index: 0;
 }
 
-h2{
-font-family:'Great Vibes',cursive;
-font-size:50px;
-margin-bottom:20px;
+.glow-one {
+    background: #8a2be2;
+    top: -120px;
+    left: -100px;
 }
 
-p{
-font-size:22px;
-max-width:800px;
-line-height:1.8;
+.glow-two {
+    background: #b00030;
+    bottom: -120px;
+    right: -100px;
 }
 
-button{
-margin-top:30px;
-padding:15px 40px;
-font-size:18px;
-border:none;
-border-radius:50px;
-cursor:pointer;
-background:white;
-color:#ff2e74;
-font-weight:bold;
-transition:.3s;
-box-shadow:0 10px 25px rgba(0,0,0,.2);
+/* Main container */
+
+.container {
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 70px 0;
+    text-align: center;
 }
 
-button:hover{
-transform:scale(1.08);
+/* Heart */
+
+.heart {
+    font-size: 60px;
+    color: #d41445;
+    text-shadow:
+        0 0 10px rgba(212, 20, 69, 0.8),
+        0 0 30px rgba(138, 43, 226, 0.6);
+    animation: heartbeat 2s infinite;
 }
 
-.hidden{
-display:none;
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
 }
 
-.letter-box{
-width:90%;
-max-width:850px;
-margin:60px auto;
-padding:35px;
-background:rgba(255,255,255,.18);
-backdrop-filter:blur(12px);
-border-radius:25px;
-box-shadow:0 10px 35px rgba(0,0,0,.2);
+/* Heading */
+
+h1 {
+    margin-top: 20px;
+    font-size: clamp(2.2rem, 7vw, 4rem);
+    font-weight: normal;
+    color: #ffffff;
+    text-shadow:
+        0 0 10px rgba(255, 255, 255, 0.2),
+        0 0 25px rgba(138, 43, 226, 0.6);
 }
 
-.slider{
-margin:40px auto;
-width:320px;
-height:420px;
-overflow:hidden;
-border-radius:25px;
-box-shadow:0 15px 40px rgba(0,0,0,.35);
+.divider {
+    width: 100px;
+    height: 2px;
+    margin: 25px auto;
+    background: linear-gradient(
+        to right,
+        transparent,
+        #d41445,
+        #8a2be2,
+        transparent
+    );
 }
 
-.slider img{
-width:100%;
-height:100%;
-object-fit:cover;
-transition:1s;
+/* Intro */
+
+.intro {
+    max-width: 600px;
+    margin: 0 auto 45px;
+    color: #d8c5e8;
+    font-size: 1.1rem;
+    line-height: 1.9;
+    font-style: italic;
 }
 
-.cards{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:20px;
-padding:30px;
+/* Message */
+
+.message {
+    background: rgba(25, 7, 40, 0.75);
+    border: 1px solid rgba(138, 43, 226, 0.3);
+    border-radius: 25px;
+    padding: 35px 30px;
+    text-align: left;
+    box-shadow:
+        0 0 30px rgba(69, 20, 100, 0.25),
+        inset 0 0 30px rgba(138, 43, 226, 0.03);
+    backdrop-filter: blur(10px);
 }
 
-.card{
-width:250px;
-padding:25px;
-background:rgba(255,255,255,.18);
-backdrop-filter:blur(10px);
-border-radius:20px;
-font-size:22px;
-transition:.4s;
+.message p {
+    color: #eadff2;
+    font-size: 1.08rem;
+    line-height: 1.9;
+    margin-bottom: 25px;
 }
 
-.card:hover{
-transform:translateY(-10px) scale(1.05);
+.message p:last-child {
+    margin-bottom: 0;
 }
 
-.big-heart{
-font-size:120px;
-animation:beat 1s infinite;
-margin-top:40px;
+.highlight {
+    color: #ff527d;
+    font-style: italic;
 }
 
-#hearts{
-position:fixed;
-width:100%;
-height:100%;
-pointer-events:none;
-overflow:hidden;
-top:0;
-left:0;
+.important {
+    color: #f4d9ff !important;
+    font-weight: bold;
 }
 
-.heart{
-position:absolute;
-color:white;
-font-size:20px;
-animation:float linear infinite;
-opacity:.8;
+.love {
+    text-align: center;
+    color: #ff527d !important;
+    font-size: 2rem !important;
+    font-weight: bold;
+    text-shadow: 0 0 20px rgba(255, 82, 125, 0.5);
+    margin-top: 40px;
 }
 
-@keyframes float{
-0%{
-transform:translateY(100vh);
-opacity:0;
-}
-20%{
-opacity:1;
-}
-100%{
-transform:translateY(-120vh);
-opacity:0;
-}
+.signature {
+    text-align: right;
+    color: #cda7e8 !important;
+    font-style: italic;
 }
 
-@keyframes glow{
-from{
-text-shadow:0 0 15px white;
-}
-to{
-text-shadow:0 0 35px white,0 0 50px hotpink;
-}
+/* Photos */
+
+.photos {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin: 50px auto;
 }
 
-@keyframes beat{
-0%{
-transform:scale(1);
-}
-50%{
-transform:scale(1.2);
-}
-100%{
-transform:scale(1);
-}
-}
-
-@media(max-width:768px){
-
-h1{
-font-size:48px;
+.photo-card {
+    width: 250px;
+    height: 300px;
+    padding: 8px;
+    background: linear-gradient(
+        145deg,
+        rgba(138, 43, 226, 0.5),
+        rgba(180, 0, 50, 0.4)
+    );
+    border-radius: 20px;
+    transform: rotate(-2deg);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    transition: 0.4s ease;
 }
 
-h2{
-font-size:36px;
+.photo-card:nth-child(2) {
+    transform: rotate(2deg);
 }
 
-p{
-font-size:18px;
+.photo-card:hover {
+    transform: translateY(-10px) rotate(0deg);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.5),
+        0 0 25px rgba(138, 43, 226, 0.4);
 }
 
-.slider{
-width:260px;
-height:340px;
+.photo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 14px;
+    display: block;
 }
 
-.card{
-width:90%;
+/* Button */
+
+button {
+    border: 1px solid rgba(255, 82, 125, 0.5);
+    background: rgba(70, 15, 90, 0.6);
+    color: #ffeaf2;
+    padding: 15px 25px;
+    border-radius: 50px;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s ease;
 }
 
-button{
-font-size:16px;
-padding:12px 30px;
+button span {
+    color: #ff527d;
+    margin-right: 5px;
 }
 
+button:hover {
+    background: rgba(138, 43, 226, 0.4);
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px rgba(138, 43, 226, 0.4);
+}
+
+/* Hidden message */
+
+.hidden-message {
+    max-width: 600px;
+    margin: 25px auto 0;
+    padding: 30px;
+    background: rgba(45, 10, 60, 0.7);
+    border-left: 3px solid #d41445;
+    border-radius: 15px;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition:
+        opacity 0.6s ease,
+        max-height 0.8s ease,
+        padding 0.6s ease;
+}
+
+.hidden-message.show {
+    opacity: 1;
+    max-height: 400px;
+}
+
+.hidden-message p {
+    color: #e6d4ed;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.small-love {
+    color: #ff527d !important;
+}
+
+/* Footer */
+
+footer {
+    margin-top: 60px;
+    color: #8e719d;
+    font-size: 0.85rem;
+}
+
+/* Floating hearts */
+
+.floating-heart {
+    position: fixed;
+    bottom: -30px;
+    color: #d41445;
+    font-size: 18px;
+    pointer-events: none;
+    z-index: 1;
+    animation: floatUp linear forwards;
+    opacity: 0;
+}
+
+@keyframes floatUp {
+
+    0% {
+        transform: translateY(0) scale(0.5) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.7;
+    }
+
+    80% {
+        opacity: 0.4;
+    }
+
+    100% {
+        transform: translateY(-110vh) scale(1.2) rotate(180deg);
+        opacity: 0;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 92%;
+        padding: 50px 0;
+    }
+
+    .message {
+        padding: 25px 20px;
+    }
+
+    .message p {
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+
+    .intro {
+        font-size: 1rem;
+    }
+
+    .photo-card {
+        width: 220px;
+        height: 270px;
+    }
+
+    .love {
+        font-size: 1.7rem !important;
+    }
 }

@@ -1,97 +1,58 @@
-// ===== TYPEWRITER EFFECT =====
-const message =
-"Every heartbeat reminds me of you, Cutie ❤️ Thank you for being you. I hope this little surprise brings a smile to your face.";
+const heartButton = document.getElementById("heartButton");
+const hiddenMessage = document.getElementById("hiddenMessage");
+const heartsContainer = document.getElementById("hearts-container");
 
-let i = 0;
+/* Show the hidden message */
 
-function typeWriter() {
-    if (i < message.length) {
-        document.getElementById("typing").innerHTML += message.charAt(i);
-        i++;
-        setTimeout(typeWriter, 50);
-    }
-}
+heartButton.addEventListener("click", function () {
 
-window.onload = function () {
-    typeWriter();
-    createHearts();
-};
+    hiddenMessage.classList.toggle("show");
 
-// ===== OPEN LETTER =====
-function openLetter() {
-    document.getElementById("letter").style.display = "block";
-    document.querySelector(".hero").style.display = "none";
-
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
-}
-
-// ===== SHOW GALLERY =====
-function showGallery() {
-    document.getElementById("gallery").style.display = "block";
-    document.getElementById("reasons").style.display = "block";
-
-    window.scrollTo({
-        top: document.getElementById("gallery").offsetTop,
-        behavior: "smooth"
-    });
-}
-
-// ===== IMAGE SLIDESHOW =====
-const images = [
-    "images/cutie1.jpg",
-    "images/cutie2.jpg"
-];
-
-let current = 0;
-
-function nextImage() {
-    current++;
-
-    if (current >= images.length) {
-        current = 0;
+    if (hiddenMessage.classList.contains("show")) {
+        heartButton.innerHTML = "<span>♥</span> I meant this...";
+    } else {
+        heartButton.innerHTML = "<span>♥</span> One more thing...";
     }
 
-    document.getElementById("slide").src = images[current];
+});
+
+/* Create floating hearts */
+
+function createHeart() {
+
+    const heart = document.createElement("div");
+
+    heart.classList.add("floating-heart");
+
+    heart.innerHTML = Math.random() > 0.5 ? "♥" : "♡";
+
+    heart.style.left = Math.random() * 100 + "vw";
+
+    const size = Math.random() * 15 + 10;
+
+    heart.style.fontSize = size + "px";
+
+    const duration = Math.random() * 6 + 7;
+
+    heart.style.animationDuration = duration + "s";
+
+    heartsContainer.appendChild(heart);
+
+    setTimeout(function () {
+        heart.remove();
+    }, duration * 1000);
 }
 
-// ===== FINAL PAGE =====
-function ending() {
+/* Generate hearts occasionally */
 
-    document.getElementById("final").style.display = "block";
+setInterval(createHeart, 1200);
 
-    window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: "smooth"
-    });
+/* Create a few hearts when the page opens */
 
-    alert("❤️ I hope this made you smile, Cutie ❤️");
-}
+for (let i = 0; i < 5; i++) {
 
-// ===== FLOATING HEARTS =====
-function createHearts() {
-
-    const container = document.getElementById("hearts");
-
-    setInterval(function () {
-
-        const heart = document.createElement("div");
-
-        heart.className = "heart";
-        heart.innerHTML = "❤️";
-
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.fontSize = (20 + Math.random() * 30) + "px";
-        heart.style.animationDuration = (5 + Math.random() * 5) + "s";
-
-        container.appendChild(heart);
-
-        setTimeout(function () {
-            heart.remove();
-        }, 10000);
-
-    }, 300);
+    setTimeout(function () {
+        createHeart();
+    }, i * 700);
 
 }
