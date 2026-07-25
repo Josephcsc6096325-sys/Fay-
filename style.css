@@ -1,0 +1,502 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top, #35105c 0%, #170522 40%, #09030f 100%);
+    color: #f5eaff;
+    font-family: Georgia, "Times New Roman", serif;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* Background glow */
+
+.background-glow {
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.25;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.glow-one {
+    background: #8a2be2;
+    top: -120px;
+    left: -100px;
+}
+
+.glow-two {
+    background: #b00030;
+    bottom: -120px;
+    right: -100px;
+}
+
+/* Main container */
+
+.container {
+    position: relative;
+    z-index: 2;
+    width: 90%;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 50px 0 70px;
+    text-align: center;
+}
+
+/* Music Player */
+
+.music-player {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 55px;
+    padding: 20px 25px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    text-align: left;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(72, 20, 105, 0.85),
+            rgba(80, 8, 35, 0.85)
+        );
+
+    border: 1px solid rgba(180, 70, 220, 0.35);
+    border-radius: 22px;
+
+    box-shadow:
+        0 0 25px rgba(138, 43, 226, 0.2),
+        0 0 35px rgba(180, 0, 50, 0.12);
+
+    backdrop-filter: blur(10px);
+}
+
+.music-icon {
+    width: 55px;
+    height: 55px;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #8a2be2,
+            #b00030
+        );
+
+    font-size: 25px;
+
+    box-shadow:
+        0 0 20px rgba(138, 43, 226, 0.5);
+}
+
+.music-info {
+    flex: 1;
+}
+
+.music-info h2 {
+    color: #ffffff;
+    font-size: 1.05rem;
+    font-weight: normal;
+    margin-bottom: 4px;
+}
+
+.music-info p {
+    color: #cda7e8;
+    font-size: 0.85rem;
+}
+
+#musicButton {
+    border: 1px solid rgba(255, 82, 125, 0.5);
+    background: rgba(35, 5, 50, 0.7);
+    color: #ffeaf2;
+
+    padding: 12px 17px;
+    border-radius: 30px;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 0.85rem;
+
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+#musicButton:hover {
+    background: rgba(138, 43, 226, 0.45);
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 20px rgba(138, 43, 226, 0.4);
+}
+
+#musicIcon {
+    color: #ff527d;
+    margin-right: 5px;
+}
+
+/* Music playing animation */
+
+.music-player.playing .music-icon {
+    animation: musicPulse 1.2s infinite;
+}
+
+@keyframes musicPulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow:
+            0 0 20px rgba(138, 43, 226, 0.5);
+    }
+
+    50% {
+        transform: scale(1.08);
+        box-shadow:
+            0 0 30px rgba(255, 82, 125, 0.6);
+    }
+}
+
+/* Heart */
+
+.heart {
+    font-size: 60px;
+    color: #d41445;
+    text-shadow:
+        0 0 10px rgba(212, 20, 69, 0.8),
+        0 0 30px rgba(138, 43, 226, 0.6);
+    animation: heartbeat 2s infinite;
+}
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+/* Heading */
+
+h1 {
+    margin-top: 20px;
+    font-size: clamp(2.2rem, 7vw, 4rem);
+    font-weight: normal;
+    color: #ffffff;
+    text-shadow:
+        0 0 10px rgba(255, 255, 255, 0.2),
+        0 0 25px rgba(138, 43, 226, 0.6);
+}
+
+.divider {
+    width: 100px;
+    height: 2px;
+    margin: 25px auto;
+
+    background: linear-gradient(
+        to right,
+        transparent,
+        #d41445,
+        #8a2be2,
+        transparent
+    );
+}
+
+/* Intro */
+
+.intro {
+    max-width: 600px;
+    margin: 0 auto 45px;
+    color: #d8c5e8;
+    font-size: 1.1rem;
+    line-height: 1.9;
+    font-style: italic;
+}
+
+/* Message */
+
+.message {
+    background: rgba(25, 7, 40, 0.75);
+    border: 1px solid rgba(138, 43, 226, 0.3);
+    border-radius: 25px;
+    padding: 35px 30px;
+    text-align: left;
+
+    box-shadow:
+        0 0 30px rgba(69, 20, 100, 0.25),
+        inset 0 0 30px rgba(138, 43, 226, 0.03);
+
+    backdrop-filter: blur(10px);
+}
+
+.message p {
+    color: #eadff2;
+    font-size: 1.08rem;
+    line-height: 1.9;
+    margin-bottom: 25px;
+}
+
+.message p:last-child {
+    margin-bottom: 0;
+}
+
+.highlight {
+    color: #ff527d;
+    font-style: italic;
+}
+
+.important {
+    color: #f4d9ff !important;
+    font-weight: bold;
+}
+
+.love {
+    text-align: center;
+    color: #ff527d !important;
+    font-size: 2rem !important;
+    font-weight: bold;
+
+    text-shadow:
+        0 0 20px rgba(255, 82, 125, 0.5);
+
+    margin-top: 40px;
+}
+
+.signature {
+    text-align: right;
+    color: #cda7e8 !important;
+    font-style: italic;
+}
+
+/* Photos */
+
+.photos {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    margin: 50px auto;
+}
+
+.photo-card {
+    width: 250px;
+    height: 300px;
+    padding: 8px;
+
+    background: linear-gradient(
+        145deg,
+        rgba(138, 43, 226, 0.5),
+        rgba(180, 0, 50, 0.4)
+    );
+
+    border-radius: 20px;
+    transform: rotate(-2deg);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.4);
+
+    transition: 0.4s ease;
+}
+
+.photo-card:nth-child(2) {
+    transform: rotate(2deg);
+}
+
+.photo-card:hover {
+    transform: translateY(-10px) rotate(0deg);
+
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.5),
+        0 0 25px rgba(138, 43, 226, 0.4);
+}
+
+.photo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 14px;
+    display: block;
+}
+
+/* Button */
+
+button {
+    border: 1px solid rgba(255, 82, 125, 0.5);
+    background: rgba(70, 15, 90, 0.6);
+    color: #ffeaf2;
+
+    padding: 15px 25px;
+    border-radius: 50px;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 1rem;
+
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button span {
+    color: #ff527d;
+    margin-right: 5px;
+}
+
+button:hover {
+    background: rgba(138, 43, 226, 0.4);
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 0 25px rgba(138, 43, 226, 0.4);
+}
+
+/* Hidden message */
+
+.hidden-message {
+    max-width: 600px;
+    margin: 25px auto 0;
+    padding: 30px;
+
+    background: rgba(45, 10, 60, 0.7);
+
+    border-left: 3px solid #d41445;
+    border-radius: 15px;
+
+    opacity: 0;
+    max-height: 0;
+
+    overflow: hidden;
+
+    transition:
+        opacity 0.6s ease,
+        max-height 0.8s ease,
+        padding 0.6s ease;
+}
+
+.hidden-message.show {
+    opacity: 1;
+    max-height: 400px;
+}
+
+.hidden-message p {
+    color: #e6d4ed;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.small-love {
+    color: #ff527d !important;
+}
+
+/* Footer */
+
+footer {
+    margin-top: 60px;
+    color: #8e719d;
+    font-size: 0.85rem;
+}
+
+/* Floating hearts */
+
+.floating-heart {
+    position: fixed;
+    bottom: -30px;
+
+    color: #d41445;
+    font-size: 18px;
+
+    pointer-events: none;
+    z-index: 1;
+
+    animation: floatUp linear forwards;
+
+    opacity: 0;
+}
+
+@keyframes floatUp {
+
+    0% {
+        transform: translateY(0) scale(0.5) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 0.7;
+    }
+
+    80% {
+        opacity: 0.4;
+    }
+
+    100% {
+        transform: translateY(-110vh) scale(1.2) rotate(180deg);
+        opacity: 0;
+    }
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .container {
+        width: 92%;
+        padding: 35px 0 50px;
+    }
+
+    .music-player {
+        padding: 18px;
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .music-info {
+        text-align: left;
+    }
+
+    #musicButton {
+        width: 100%;
+    }
+
+    .message {
+        padding: 25px 20px;
+    }
+
+    .message p {
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+
+    .intro {
+        font-size: 1rem;
+    }
+
+    .photo-card {
+        width: 220px;
+        height: 270px;
+    }
+
+    .love {
+        font-size: 1.7rem !important;
+    }
+}
